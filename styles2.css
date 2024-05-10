@@ -1,0 +1,102 @@
+
+
+body{
+    font-family: Inter;
+    font-weight: Bold;
+    background-color: #e3e3e3;
+    margin: auto;
+    text-align: center;
+}
+
+body > main {
+    background-color: #0e660e;
+    width: 250px;
+    margin: auto;
+    padding: 10px;
+    border-radius: 25px;
+    color: white;
+}
+
+form > label {
+    display: block;
+    margin-bottom: 5px;
+
+}
+form > input#enviar {
+        padding: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: greenyellow;
+}
+form > input#enviar:hover {
+    padding: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #548e00;
+}
+form > input#enviar:active {
+    padding: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #325700;
+    border: 0;
+}
+
+form > input {
+    margin-bottom: 10px;
+    border-radius: 3px;
+    border: none;
+    box-shadow: 0px 1px 3px black;
+}
+form > input:focus {
+    border: 2px solid greenyellow; /* Borda vermelha de 2px quando o campo está em foco */
+    outline: none; /* Remove o contorno padrão quando o campo está em foco */
+}
+
+
+body > section {
+    color: #0e660e;
+}
+
+body > section > a > button {
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    width: 100px;
+    border: none;
+    margin-left: 10px;
+    box-shadow: 0px 2px 5px black;
+}
+
+body > section > a > button:hover {
+    background: #bababa;
+
+}
+body > section > a > button:active {
+    background: #595959;
+
+}
+body > section > h1 {
+    color: white;
+    padding-top: 50px;
+}
+
+body > section{
+    background-color: brown;
+    width: 500px;
+    margin: auto;
+    border-radius: 15px;
+}
+
+footer {
+    background-color: #595959;
+    padding-bottom: 300px;
+}
+footer > h6 {
+    color: white;
+    padding: 100px;
+
+}
+
