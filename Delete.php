@@ -1,5 +1,7 @@
 <?php
 //DELETE PRONTO
+//A MENSAGEM É INICIADA AQUI PARA NAO OCORER UM BUG E ELA APARECER NA TELA
+$msgfeedback= '';
 if (isset($_POST['id-input'])){
 
     //CONEXÃO COM BANCO DE DADOS
@@ -13,13 +15,10 @@ if (isset($_POST['id-input'])){
     $stmt = $PDO->prepare($sqldelete);
     $stmt->execute($dados);
     if ($stmt->rowCount() > 0) {
-        echo "Registro deletado com sucesso.";
+        $msgfeedback = "Registro deletado com sucesso.";
     } else {
-        echo "Erro ao deletar o registro.";
+        $msgfeedback ="Erro ao deletar o registro.";
     }
-} else {
-    echo "ID não foi enviado.";
-
 }
 ?>
 
@@ -33,6 +32,7 @@ if (isset($_POST['id-input'])){
 </head>
 <body>
 <h1>Deletar</h1>
+<p><?php echo $msgfeedback ?></p>
 <main>
 <form action="Delete.php" method="post">
     <label for="id">Digite o ID:</label>

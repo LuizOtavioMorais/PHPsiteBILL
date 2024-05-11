@@ -1,5 +1,7 @@
 <?php
 //UPDATE PRONTO
+//A MENSAGEM É INICIADA AQUI PARA NAO OCORER UM BUG E ELA APARECER NA TELA
+$msgValidação = '';
 if (isset($_POST['id-input']) && isset($_POST['alterar-input']) && isset($_POST['novovalor-input'])){
         if (!empty($_POST['id-input']) && !empty($_POST['alterar-input']) && !empty($_POST['novovalor-input'])) {
 

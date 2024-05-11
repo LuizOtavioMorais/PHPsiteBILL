@@ -1,17 +1,4 @@
-<?php
-
-    $PDO = new PDO("mysql:host=localhost;dbname=bancoaula", "root", "");
-
-    $read = $PDO->query("SELECT * FROM usuarios");
-    $listaread = $read->fetchAll();
-    var_dump($listaread);
-
-
-
-
-
-?>
-
+<?php //READ FEITO ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -21,13 +8,44 @@
     <link rel="stylesheet" href="styles3.css">
 </head>
 <body>
-<h1>BANCO DE DADOS FUNCIONAL</h1>
+<h1>READ</h1>
 <main>
     <form action="Read.php" method="post">
 
-        <input type="submit" value="Exibir Informações" id="enviar"> <br>
+        <input type="submit" value="Exibir Informações" id="exibir" name="exibir-botton"> <br>
     </form>
 </main>
+<?php
+//READ PRONTO
+if(isset($_POST["exibir-botton"])) {
+
+    $PDO = new PDO("mysql:host=localhost;dbname=bancoaula", "root", "");
+
+    $read = $PDO->query("SELECT * FROM usuarios");
+    $listaread = $read->fetchAll();
+
+    if($listaread){
+        echo "<div class ='tabelacontainer'>";
+        echo "<h2>Dados do Banco de Dados:</h2>";
+        echo "<table border='1' id='tabela'>";
+        echo "<tr><th>ID</th><th>Nome</th><th>Email</th></tr>";
+
+        foreach($listaread as $usuario){
+            echo "<tr>";
+            echo "<td>" . $usuario['id'] . "</td>";
+            echo "<td>" . $usuario['nome'] . "</td>";
+            echo "<td>" . $usuario['email'] . "</td>";
+            echo "</tr>";
+        }
+        echo "</table>";
+        echo "</div>";
+    }
+
+
+}
+
+
+?>
 <section>
     <h1> Gerenciamento do banco </h1> <br>
     <a href="Create.php"><button><h1>Create</h1></button></a>

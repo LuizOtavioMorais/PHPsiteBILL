@@ -1,4 +1,6 @@
 <?php
+//CREATE PRONTO
+//A MENSAGEM É INICIADA AQUI PARA NAO OCORER UM BUG E ELA APARECER NA TELA
 $msgsucesso = '';
 //NESSE EXERCICIO EU IREI FAZER UM SITE COM UM BANCO DE DADOS FUNCIONAL COM EXCLUSSAO ADICÃO ETC (CRUD)
 
@@ -12,6 +14,7 @@ if (isset($_POST['email-input']) && isset($_POST['senha-input']) && isset($_POST
         'email' => $_POST['email-input'],
         'senha' => sha1($_POST['senha-input'])
         ];
+        //=================================
         //CONEXAO COM O BANCO
         $sql = "INSERT INTO usuarios (id,nome,email,senha) VALUES (NULL,:nome,:email,sha1(:senha))";
         $resultado = $PDO->prepare($sql);
@@ -23,6 +26,7 @@ if (isset($_POST['email-input']) && isset($_POST['senha-input']) && isset($_POST
     }
 
 }
+//======================================
 ?>
 
 <!DOCTYPE html>
