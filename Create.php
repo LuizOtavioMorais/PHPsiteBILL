@@ -14,6 +14,8 @@ if (isset($_POST['email-input']) && isset($_POST['senha-input']) && isset($_POST
         'email' => $_POST['email-input'],
         'senha' => sha1($_POST['senha-input'])
         ];
+
+
         //=================================
         //CONEXAO COM O BANCO
         $sql = "INSERT INTO usuarios (id,nome,email,senha) VALUES (NULL,:nome,:email,sha1(:senha))";

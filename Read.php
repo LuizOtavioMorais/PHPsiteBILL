@@ -1,4 +1,4 @@
-<?php //READ FEITO ?>
+<?php //READ PRONTO ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
