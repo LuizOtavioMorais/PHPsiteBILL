@@ -11,7 +11,7 @@ if (isset($_POST['id-input'])){
             'id' => $_POST['id-input']
     ];
 
-    $sqldelete =  "DELETE FROM usuarios WHERE ID = :id";
+    $sqldelete =  "DELETE FROM usuarios1 WHERE ID = :id";
     $stmt = $PDO->prepare($sqldelete);
     $stmt->execute($dados);
     if ($stmt->rowCount() > 0) {
@@ -28,7 +28,7 @@ if (isset($_POST['id-input'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EXERCICIO</title>
-    <link rel="stylesheet" href="styles2.css">
+    <link rel="stylesheet" href="stylesDelete.css">
 </head>
 <body>
 <h1>Deletar</h1>

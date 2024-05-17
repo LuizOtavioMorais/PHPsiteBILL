@@ -18,13 +18,17 @@ if (isset($_POST['email-input']) && isset($_POST['senha-input']) && isset($_POST
 
         //=================================
         //CONEXAO COM O BANCO
-        $sql = "INSERT INTO usuarios (id,nome,email,senha) VALUES (NULL,:nome,:email,sha1(:senha))";
+        $sql = "INSERT INTO usuarios1 (id,nome,email,senha) VALUES (NULL,:nome,:email,sha1(:senha))";
         $resultado = $PDO->prepare($sql);
         $resultado->execute($dados);
         $msgsucesso = "Cadastro realizado com sucesso!";
+        header("Location: Create.php");
+        exit();
 }
     else {
         $msgsucesso = "Preencha todos os campos!";
+        header("Location: Create.php");
+        exit();
     }
 
 }
@@ -37,7 +41,7 @@ if (isset($_POST['email-input']) && isset($_POST['senha-input']) && isset($_POST
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EXERCICIO</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="stylesCreate.css">
 </head>
 <body>
 <h1>BANCO DE DADOS FUNCIONAL</h1>
@@ -64,6 +68,31 @@ if (isset($_POST['email-input']) && isset($_POST['senha-input']) && isset($_POST
     <a href="Update.php"><button><h1>Update</h1></button></a>
     <a href="Delete.php"><button><h1>Delete</h1></button></a>
     </section>
+
+
+<section2 id="listaPermanente">
+    <h2>Lista de Usuarios: </h2>
+    <hr>
+    <?php
+    $PDO2 = new PDO("mysql:host=localhost;dbname=bancoaula", "root", "");
+    $sqlExibe = "SELECT * FROM usuarios1";
+    $exibido = $PDO2->query($sqlExibe);
+    $listaDeUsuarios = $exibido->fetchAll(PDO::FETCH_ASSOC);
+
+    Foreach($listaDeUsuarios as $usuario) {
+        echo "<h3> Usuario ID: " . $usuario['id'] . "</h3>";
+        echo "<p> Nome: " . $usuario['nome'] . "</p>" . "<br>";
+        echo "<p> Email: " .  $usuario['email'] ."</p>". "<br>";
+        echo '<a href="/PHPSiteBILL/DeletePorBotao.php?id=' . $usuario['id'] . '" id="delete"><button id="deletebutton">Deletar Usuario</button></a>';
+        echo '<a href="/PHPSiteBILL/UpdatePorBotao.php?id=' . $usuario['id'] . '" id="update"><button id="updatebutton">Editar Usuario</button></a>';
+
+        echo "<hr>";
+
+    }
+        ?>
+
+
+</section2>
 
 <footer><h6>Feita pelo Luizindomau</h6></footer>
 </body>

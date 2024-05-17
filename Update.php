@@ -1,28 +1,32 @@
 <?php
 //UPDATE PRONTO
 //A MENSAGEM É INICIADA AQUI PARA NAO OCORER UM BUG E ELA APARECER NA TELA
-$msgValidação = '';
+$msgValidacao = '';
 if (isset($_POST['id-input']) && isset($_POST['alterar-input']) && isset($_POST['novovalor-input'])){
         if (!empty($_POST['id-input']) && !empty($_POST['alterar-input']) && !empty($_POST['novovalor-input'])) {
+            if ($_POST['alterar-input'] === 'nome'&& $_POST['alterar-input'] === 'email' && $_POST['alterar-input'] === 'senha') {
+                //DEFINIÇÃO DE DADOS
+                $dados = [
+                    'id' => $_POST['id-input'],
+                    'novovalor' => $_POST ['novovalor-input']
+                ];
 
-            //DEFINIÇÃO DE DADOS
-            $dados = [
-                'id' => $_POST['id-input'],
-                'novovalor' => $_POST ['novovalor-input']
-            ];
-
-            $alterar = $_POST ['alterar-input'];
-            //=====================
-            //CONEXÃO E EXECUÇÃO DO CODIGO SQL
-            $PDO = new PDO("mysql:host=localhost;dbname=bancoaula", "root", "");
-            $sql = "UPDATE usuarios SET $alterar = :novovalor WHERE id = :id";
-            $EDITAR = $PDO->prepare($sql);
-            $EDITAR->execute($dados);
-            $msgValidação = "O usuario foi ATUALIZADO";
+                $alterar = $_POST ['alterar-input'];
+                //=====================
+                //CONEXÃO E EXECUÇÃO DO CODIGO SQL
+                $PDO = new PDO("mysql:host=localhost;dbname=bancoaula", "root", "");
+                $sql = "UPDATE usuarios1 SET $alterar = :novovalor WHERE id = :id";
+                $EDITAR = $PDO->prepare($sql);
+                $EDITAR->execute($dados);
+                $msgValidacao = "O usuario foi ATUALIZADO";
+            }
+            else{
+                $msgValidacao = "Coluna não escolhida corretamente";
+            }
             //=====================
         }
         else{
-            $msgValidação = "Preencha corretamente todos os campos!";
+            $msgValidacao = "Preencha corretamente todos os campos!";
 
 }}
 
@@ -34,11 +38,11 @@ if (isset($_POST['id-input']) && isset($_POST['alterar-input']) && isset($_POST[
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EXERCICIO</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="stylesCreate.css">
 </head>
 <body>
 <h1>UPDATE</h1>
-<p> <?php echo $msgValidação; ?> </p>
+<p> <?php echo $msgValidacao; ?> </p>
 <main>
 
     <form action="Update.php" method="post">

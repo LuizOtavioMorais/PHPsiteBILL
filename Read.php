@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EXERCICIO</title>
-    <link rel="stylesheet" href="styles3.css">
+    <link rel="stylesheet" href="stylesRead.css">
 </head>
 <body>
 <h1>READ</h1>
@@ -21,7 +21,7 @@ if(isset($_POST["exibir-botton"])) {
 
     $PDO = new PDO("mysql:host=localhost;dbname=bancoaula", "root", "");
 
-    $read = $PDO->query("SELECT * FROM usuarios");
+    $read = $PDO->query("SELECT * FROM usuarios1");
     $listaread = $read->fetchAll();
 
     if($listaread){
