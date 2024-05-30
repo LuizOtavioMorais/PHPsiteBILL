@@ -1,5 +1,7 @@
-
-
+/*ESTILO USADO NO CREATE E UPDATE*/
+section3 {
+    color: #ff0000;
+}
 body{
     font-family: Inter;
     font-weight: Bold;
@@ -91,12 +93,16 @@ body > section{
 
 footer {
     background-color: #595959;
-    padding-bottom: 300px;
+    margin: 0;
+    padding: 20px 0;
+    text-align: center;
+    color: white;
+    font-family: Arial, sans-serif;
 }
 footer > h6 {
     color: white;
-    padding: 100px;
-
+    margin: 10px 0;
+    font-size: 16px;
 }
 
 #listaPermanente{
@@ -111,7 +117,6 @@ footer > h6 {
 }
 #listaPermanente > p{
     display: inline-block;
-
 
 }
 #listaPermanente a button#updatebutton {
@@ -173,4 +178,5 @@ footer > h6 {
 }
 #listaPermanente > hr{
     width: 300px;
+    margin-bottom: 0px;
 }
