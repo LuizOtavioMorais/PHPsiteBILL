@@ -80,3 +80,7 @@ class Create extends Validation
         }
     }
 }
+$create = new Create();
+if (isset($_POST['submit'])) {
+    $create->cadastrarDados();
+}

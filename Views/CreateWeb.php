@@ -1,15 +1,10 @@
 <?php
 // PHP QUE CRIA USUARIO APARTIR DA CLASSE CREATE
 require_once '../Models/Create.php';
-
+//MENSAGEM DE FEEDBACK
 $msgsucesso = '';
 $create = new Create();
-
-if (isset($_POST['submit'])) {
-    $create->cadastrarDados();
-}
 $create->msgFeedback();
-
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +14,7 @@ $create->msgFeedback();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EXERCICIO</title>
-    <link rel="stylesheet" href="../Styles/stylesCreateAndUpdate.css">
+    <link rel="stylesheet" href="../Styles/stylesCreate.css">
 </head>
 <body>
 <h1>MÉTODO CRUD FUNCIONAL</h1>
