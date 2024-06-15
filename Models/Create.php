@@ -54,23 +54,43 @@ class Create extends Validation
     {
         try {
             if ($this->entradaDeDados() && $this->verificaVazios()) {
-                $PDO = new PDO("mysql:host=localhost;dbname=bancoaula", "root", "");
-                $nome = filter_input(INPUT_POST, 'nome-input', FILTER_SANITIZE_SPECIAL_CHARS);
+                $sqlVerifica = "SELECT * FROM usuarios1 WHERE email = :email";
                 $email = filter_input(INPUT_POST,'email-input');
-                $senha = sha1(filter_input(INPUT_POST, 'senha-input'));
-                $sql = "INSERT INTO usuarios1 (id, nome, email, senha) VALUES (NULL, :nome, :email, :senha)";
-                $resultado = $PDO->prepare($sql);
-                $resultado->bindParam(':nome', $nome);
-                $resultado->bindParam(':email', $email);
-                $resultado->bindParam(':senha', $senha);
+                $PDO = new PDO("mysql:host=localhost;dbname=bancoaula", "root", "");
+                $verific = $PDO->prepare($sqlVerifica);
+                $verific->bindParam(":email",$email);
 
-            if ($resultado->execute()) {
-                header("Location: ../Views/CreateWeb.php?id=1");
-                exit();
-            } else {
-                header("Location: ../Views/CreateWeb.php?id=6");
-                exit();
-            }
+                $verificacaoEmail = 0;
+                if($verific->execute()){
+                    if($verific->rowCount() > 0){
+                        $verificacaoEmail = 1;
+                    }
+                }
+
+                if ($verificacaoEmail == 0) {
+                    $PDO = new PDO("mysql:host=localhost;dbname=bancoaula", "root", "");
+                    $nome = filter_input(INPUT_POST, 'nome-input', FILTER_SANITIZE_SPECIAL_CHARS);
+                    $email = filter_input(INPUT_POST, 'email-input');
+                    $senha = sha1(filter_input(INPUT_POST, 'senha-input'));
+                    $sql = "INSERT INTO usuarios1 (id, nome, email, senha) VALUES (NULL, :nome, :email, :senha)";
+                    $resultado = $PDO->prepare($sql);
+                    $resultado->bindParam(':nome', $nome);
+                    $resultado->bindParam(':email', $email);
+                    $resultado->bindParam(':senha', $senha);
+
+
+                    if ($resultado->execute()) {
+                        header("Location: ../Views/CreateWeb.php?id=1");
+                        exit();
+                    } else {
+                        header("Location: ../Views/CreateWeb.php?id=6");
+                        exit();
+                    }
+                }
+                if ($verificacaoEmail == 1){
+                    header("Location: ../Views/CreateWeb.php?id=6");
+                    exit();
+                }
         }}
 
         catch (PDOException $ex) {
